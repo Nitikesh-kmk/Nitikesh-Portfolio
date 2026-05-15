@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment 5 - CSS Basics</title>
+
+    <!-- 1. Internal CSS -->
+    <style>
+        body {
+            background-color: white;
+            padding: 30px;
+        }
+        .my-box {
+            background-color: lightyellow;
+            border: 2px solid orange;
+            padding: 20px;
+        }
+        h1 {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="my-box">
+        <h1>Assignment 5: Types of CSS</h1>
+
+        <h3>Method 1: Internal CSS</h3>
+        <p>The green heading above and this yellow box are styled using Internal CSS inside the &lt;style&gt; tag.</p>
+
+        <hr>
+
+        <h3>Method 2: Inline CSS</h3>
+        <!-- Inline CSS -->
+        <p style="color: red; font-size: 20px; font-weight: bold;">
+            This specific line is styled using Inline CSS inside the element tag.
+        </p>
+
+        <hr>
+
+        <h3>Method 3: External CSS</h3>
+        <p>To use External CSS, we create a file named <b>style.css</b> and link it like this:</p>
+        <code>&lt;link rel="stylesheet" href="style.css"&gt;</code>
+    </div>
+
+</body>
+</html>
