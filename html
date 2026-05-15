@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nitikesh Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  background: #f8fafc;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 230px;
+  height: 100vh;
+  background: #0f172a;
+  color: white;
+  padding: 25px;
+  position: fixed;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  padding: 12px;
+  margin: 5px 0;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.sidebar li:hover,
+.sidebar li.active {
+  background: #1e293b;
+}
+
+/* Main */
+.main {
+  margin-left: 230px;
+  padding: 40px;
+  width: 100%;
+}
+
+/* Sections */
+.section {
+  display: none;
+  animation: fade 0.4s ease;
+}
+
+.section.active {
+  display: block;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* HOME */
+.home-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.home-text {
+  max-width: 500px;
+}
+
+.home-text h1 {
+  font-size: 3rem;
+}
+
+.home-text span {
+  color: #6c63ff;
+}
+
+.home-text p {
+  margin-top: 10px;
+  color: #555;
+}
+
+.tagline {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #666;
+}
+
+/* Buttons */
+.buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  margin-right: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background: #6c63ff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #574fd6;
+}
+
+.btn-outline {
+  border: 2px solid #6c63ff;
+  color: #6c63ff;
+}
+
+.btn-outline:hover {
+  background: #6c63ff;
+  color: white;
+}
+
+/* Image */
+.home-image img {
+  width: 300px;
+  border-radius: 12px;
+}
+
+/* Cards */
+.card {
+  background: white;
+  padding: 20px;
+  margin-top: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Skills */
+.skills {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+.skills span {
+  display: inline-block;
+  background: #6c63ff;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+/* Section headings */
+h2 {
+  font-size: 28px;
+  color: #6c63ff;
+  margin-bottom: 10px;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+  .sidebar {
+    width: 70px;
+  }
+
+  .sidebar h2 {
+    display: none;
+  }
+
+  .main {
+    margin-left: 70px;
+  }
+
+  .home-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+</style>
+</head>
+<script>
+const roles = ["Data Analyst", "Data Science Learner", "Future Data Engineer"];
+let i = 0, j = 0, current = "", isDeleting = false;
+
+function type() {
+  let el = document.getElementById("typing");
+
+  if (i < roles.length) {
+    if (!isDeleting && j <= roles[i].length) {
+      current = roles[i].substring(0, j++);
+    } else if (isDeleting && j >= 0) {
+      current = roles[i].substring(0, j--);
+    }
+
+    el.innerHTML = current;
+
+    if (j == roles[i].length) isDeleting = true;
+    if (j == 0) {
+      isDeleting = false;
+      i++;
+    }
+
+    if (i == roles.length) i = 0;
+
+    setTimeout(type, isDeleting ? 50 : 100);
+  }
+}
+
+type();
+</script>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <h2>Nitikesh</h2>
+  <ul>
+    <li class="active" onclick="showSection('home', this)">Home</li>
+    <li onclick="showSection('about', this)">About</li>
+    <li onclick="showSection('projects', this)">Projects</li>
+    <li onclick="showSection('skills', this)">Skills</li>
+    <li onclick="showSection('contact', this)">Contact</li>
+  </ul>
+</div>
+
+<!-- Main -->
+<div class="main">
+
+<!-- HOME -->
+<div id="home" class="section active">
+  <div class="home-container">
+
+    <div class="home-text">
+      <h1>Hello, I'm <span>Nitikesh</span></h1>
+      <p><strong>Aspiring Data Analyst | Data Science Enthusiast</strong></p>
+      
+      <p class="tagline">
+        Computer Science student passionate about working with data and building meaningful solutions.
+      </p>
+
+     <div class="buttons"></div>
+    </div>
+
+    <div class="home-image">
+      <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png">
+    </div>
+
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="section">
+  <h2>About Me</h2>
+  <div class="card">
+    <h1><p>
+      I am a Computer Science student with a strong interest in Data Analytics, Data Engineering, and Data Science.
+      I have a basic understanding of Python and C and enjoy applying my skills to real-world problems.
+      I am continuously learning and building projects to strengthen my knowledge.
+    </p></h1>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div id="projects" class="section">
+  <h2>Projects</h2>
+
+  <div class="card">
+    <h3>MHT-CET College Predictor</h3>
+    <p>Predicts colleges based on percentile and category using Python.</p>
+  </div>
+
+  <div class="card">
+    <h3>Food Recipe Generator</h3>
+    <p>Generates recipes using leftover ingredients with Streamlit interface.</p>
+  </div>
+
+  <div class="card">
+    <h3>Digital Portfolio</h3>
+    <p>Personal portfolio built using HTML, CSS, and JavaScript.</p>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div id="skills" class="section">
+  <h2>Skills</h2>
+
+  <div class="skills">
+    <span>Python (Basics)</span>
+    <span>C (Basics)</span>
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>Data Analysis (Beginner)</span>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="section">
+  <h2>Contact</h2>
+  <div class="card">
+    <p>Email: karmankarnitikesh@gmail.com</p>
+    <p>Phone: +91 9270207463</p>
+  </div>
+</div>
+
+</div>
+
+<script>
+function showSection(id, el) {
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+
+  document.querySelectorAll('.sidebar li').forEach(li => li.classList.remove('active'));
+  el.classList.add('active');
+}
+</script>
+
+</body>
+</html>
